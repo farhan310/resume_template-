@@ -11,6 +11,7 @@ const data = {
   workExperiences: [
     {
       emoji: '☕️',
+      ariaLabel: `coffee`,
       jobTitle: 'Manager',
       institution: 'Restaurant Brands International',
       dates: '2017 - Present',
@@ -22,6 +23,7 @@ const data = {
     },
     {
       emoji: '📈',
+      ariaLabel: `stock`,
       jobTitle: 'Research Associate',
       institution: 'Cambridge Global Asset Management',
       dates: '2016 - 2016',
@@ -31,6 +33,7 @@ const data = {
     },
     {
       emoji: '📈',
+      ariaLabel: `stock`,
       jobTitle: 'Financial Analyst',
       institution: 'Rosen Capital Advisors',
       dates: '2015 - 2015',
@@ -43,6 +46,7 @@ const data = {
   educationalExperiences: [
     {
       emoji: '🎓',
+      ariaLabel: `graduation`,
       university: "Queen's University",
       school: 'Smith School of Business',
       dates: '2013 - 2017',
@@ -50,6 +54,7 @@ const data = {
     },
     {
       emoji: '🧙‍♂️',
+      ariaLabel: `wizard`,
       university: 'Harvard Business School',
       school: 'Certificate in Business Management',
       dates: '2015 - 2017',
@@ -80,3 +85,49 @@ githubContainer.textContent += data.githubHandle;
 
 const linkedInContainer = document.querySelector('#linkedin-link');
 linkedInContainer.textContent += data.linkedInHandle;
+
+function renderWorkExperience(workExperience) {
+  return `
+  <div>
+    <span class="date">${workExperience.dates}</span>
+    <h3>
+      <span role="img" aria-label="${workExperience.ariaLabel}">${
+    workExperience.emoji
+  }</span>
+      ${workExperience.jobTitle}<span class="comma">,</span>
+      <span class="light">${workExperience.institution}</span>
+    </h3>
+    <ul>
+      ${workExperience.details.map(detail => `<li>${detail}</li>`).join('')}
+    </ul>
+  </div>`;
+}
+
+const workExperienceContainer = document.querySelector('#work-experience');
+const eachWorkExperienceHTML = data.workExperiences.map(renderWorkExperience);
+const allWorkExperiencesHTML = eachWorkExperienceHTML.join('');
+workExperienceContainer.innerHTML = allWorkExperiencesHTML;
+
+const renderEducationalExperience = educationalExperience => `
+  <div>
+    <span class="date">${educationalExperience.dates}</span>
+    <h3>
+      <span role="img" aria-label="${educationalExperience.ariaLabel}">${
+  educationalExperience.emoji
+}</span>
+      ${educationalExperience.university}<span class="comma">,</span>
+      <span class="light">${educationalExperience.school}</span>
+    </h3>
+    <ul>
+      ${educationalExperience.details
+        .map(detail => `<li>${detail}</li>`)
+        .join('')}
+    </ul>
+  </div>`;
+
+const educationContainer = document.querySelector('#education');
+const eachEducationalExperienceHTML = data.educationalExperiences.map(
+  renderEducationalExperience
+);
+const allEducationalExperiencesHTML = eachEducationalExperienceHTML.join('');
+educationContainer.innerHTML = allEducationalExperiencesHTML;
