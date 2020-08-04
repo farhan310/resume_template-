@@ -8,6 +8,23 @@
   "email": "jehan.ghandhy@gmail.com",
   "githubHandle": "farhan310",
   "linkedInHandle": "jayghandhy",
+
+  "headingEmojis": {
+    "workExperience": {
+      "character": "🤙🏻",
+      "ariaLabel": "aloha"
+    },
+
+    "educationExperience": {
+      "character": "✍🏻",
+      "ariaLabel": "writing"
+    },
+    "skills": {
+      "character": "💪",
+      "ariaLabel": "muscle"
+    }
+  },
+
   "workExperiences": [
     {
       "emoji": "☕️",
